@@ -9,10 +9,10 @@ program en234fea
   character (len=80) :: Eclipse_root_folder
 
   VS_root_folder = 'H:/Repos/EN234_FEA/EN234_FEA/'   ! This should work with Intel Studio on the remote desktop if you follow the instructions for cloning your EN234FEA fork 
-  Eclipse_root_folder = './'   !  This should work with Eclipse
+  Eclipse_root_folder = 'C:/Users/truong/git/EN234_FEA/EN234_FEA/'   !  This should work with Eclipse
 
   VS_root_folder = 'C:/Users/Bower/Source/Repos/EN234_FEA/EN234_FEA/'
-  root_directory = VS_root_folder
+  root_directory = Eclipse_root_folder
     
 !
 !   Homework Assignments 2017
@@ -32,7 +32,7 @@ program en234fea
 !
 !   Small strain linear elasticity - the UEL is in Abaqus_uel_3d.for
    infil = 'input_files/Abaqus_uel_linear_elastic_3d.in'
-   outfil = 'Output_files/Abaqus_uel_linear_elastic_3d.out'
+   outfil = 'Output_Files/Abaqus_uel_linear_elastic_3d.out'
 
 !   Linear elastic plate with a central hole using an ABAQUS UEL
 !   infil = 'input_files/Abaqus_uel_holeplate_3d.in'
