@@ -31,8 +31,8 @@ program en234fea
 !   Demo codes - these provide examples of coding and testing ABAQUS user elements in EN234FEA
 !
 !   Small strain linear elasticity - the UEL is in Abaqus_uel_3d.for
-   infil = 'input_files/Abaqus_uel_linear_elastic_3d.in'
-   outfil = 'Output_Files/Abaqus_uel_linear_elastic_3d.out'
+!   infil = 'input_files/Abaqus_uel_linear_elastic_3d.in'
+!   outfil = 'Output_Files/Abaqus_uel_linear_elastic_3d.out'
 
 !   Linear elastic plate with a central hole using an ABAQUS UEL
 !   infil = 'input_files/Abaqus_uel_holeplate_3d.in'
@@ -67,11 +67,11 @@ program en234fea
 
 !   Simple test of a 2D plane element
 !   infil = 'input_files/Abaqus_uel_linear_elastic_2d.in'
-!   outfil = 'Output_files/Abaqus_uel_linear_elastic_2d.out'
+!   outfil = 'Output_Files/Abaqus_uel_linear_elastic_2d.out'
 
 !  Solve hole-in-a-plate problem with 4 noded quadrilateral elements
-!   infil = 'input_files/Abaqus_uel_holeplate_2d_quad4.in'
-!   outfil = 'Output_files/Abaqus_uel_holeplate_2d_quad4.out'
+   infil = 'input_files/Abaqus_uel_holeplate_2d_quad4.in'
+   outfil = 'Output_files/Abaqus_uel_holeplate_2d_quad4.out'
 
 !  Solve hole-in-a-plate problem with 8 noded quads
 !   infil = 'input_files/Abaqus_uel_holeplate_2d_quad8.in'
