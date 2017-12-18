@@ -2869,7 +2869,7 @@
 %       Define element properties - the values are passed to user subroutine elstif in the order they are listed here
         PROPERTIES
          2.d04, 0.3d0      % E, nu
-         0.02d0, 1.d0, 0.0001d0, 1.d0   % Omega, W, kappa, diffusion coefft
+         0.0d0, 1.d0, 0.00001d0, 1.d0   % Omega, W, kappa, diffusion coefft
          0.5d0                     % Theta
         END PROPERTIES
 %     Define element connectivity
@@ -3797,7 +3797,33 @@
           0.d0, 2.d0
          10.d0, 2.d0
         END HISTORY
- 
+
+        HISTORY, force_history
+         0.d0, 0.d0                  % Each line gives a time value and then a function value
+         0.3d-03, .02d0
+         0.93d-02, .02d0
+         0.96d-02, 0.02d0
+         0.3d-01, 0.02d0
+         0.303d-01, 0.02d0
+         0.48d-01, 0.02d0
+         0.483d-01, 0.02d0
+         0.750d-01, 0.02d0
+         0.753d-01, 0.02d0           
+        END HISTORY
+        
+        HISTORY, force_history_end
+          0.d0, 0.d0                  % Each line gives a time value and then a function value
+         0.3d-03, 0.01d0
+         0.93d-02, 0.01d0
+         0.96d-02, 0.01d0
+         0.3d-01, 0.01d0
+         0.303d-01, 0.01d0
+         0.48d-01, 0.01d0
+         0.483d-01, 0.01d0
+         0.750d-01, 0.01d0
+         0.753d-01, 0.01d0          
+        END HISTORY
+                 
 %       The NODESET key defines a list of nodes
         NODESET, left
     1,   32,   63,   94,  125,  156,  187,  218,  249,  280,  311,  342,  373,  404,  435,  466
@@ -3818,12 +3844,17 @@
  1014, 1017, 1020, 1023, 1026, 1029, 1032, 1035, 1038, 1041, 1044, 1047, 1050 
         END NODESET
         NODESET, top
-  931,  932,  933,  934,  935,  936,  937,  938,  939,  940,  941,  942,  943,  944,  945,  946
+  933,  934,  935,  936,  937,  938,  939,  940,  941,  942,  943,  944,  945,  946
   947,  948,  949,  950,  951,  952,  953,  954,  955,  956,  957,  958,  959,  960,  961, 2762
  2765, 2767, 2769, 2771, 2773, 2775, 2777, 2779, 2781, 2783, 2785, 2787, 2789, 2791, 2793, 2795
- 2797, 2799, 2801, 2803, 2805, 2807, 2809, 2811, 2813, 2815, 2817, 2819, 2821
+ 2797, 2799, 2801, 2803, 2805, 2807, 2809, 2811, 2813, 2815, 2817
         END NODESET
-
+        NODESET, top_end
+  932, 2819
+        END NODESET        
+        NODESET, top_end_r
+  931, 2821
+        END NODESET
 
 %       The DEGREE OF FREEDOM key assigns values to nodal DOFs
 %       The syntax is node set name, DOF number, VALUE/HISTORY/SUBROUTINE, value/history name/subroutine parameter list name.
@@ -3833,7 +3864,12 @@
            right, 1, HISTORY, dof_history
            base, 2, VALUE, 0.d0
         END DEGREES OF FREEDOM
-
+        
+        FORCES
+          top, 4, HISTORY, force_history
+          top_end, 4, HISTORY, force_history_end
+        END FORCES        
+        
 %        DISTRIBUTED LOADS
 %          end_element, U1, dload_history
 %          end_element, U2, dload_history
@@ -3853,7 +3889,7 @@
 
 %   The CHECK STIFFNESS key tests the element subroutine to ensure that
 %   the residual force vector is consistent with the stiffness
-%       CHECK STIFFNESS, U1
+       CHECK STIFFNESS, U1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3863,9 +3899,9 @@
 
 
           INITIAL TIME STEP, 3.d-04       
-          MAX TIME STEP, 1.d-03
-          MIN TIME STEP, 1.d-05
-          MAX NUMBER OF STEPS, 100
+          MAX TIME STEP, 1.d-02
+          MIN TIME STEP, 1.d-09
+          MAX NUMBER OF STEPS, 1
           STOP TIME, 10.d0
           USER PRINT STEP INTERVAL, 1
 
@@ -3886,7 +3922,7 @@
           USER PRINT FILES
 %          List file names to contain the output. Fortran unit numbers are provided to each file in the user subroutine
 %            filename1.dat
-             Output_files\phasefield_contourplots.dat
+             Output_files\phasefield_contourplots_4.dat
           END USER PRINT FILES
          USER PRINT PARAMETERS
                 8 % Specify the HW problem number
