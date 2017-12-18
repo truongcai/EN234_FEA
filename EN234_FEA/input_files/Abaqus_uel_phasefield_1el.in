@@ -48,7 +48,7 @@
 %       Define element properties - the values are passed to user subroutine elstif in the order they are listed here
         PROPERTIES
          100.d0, 0.3d0      % E, nu
-         0.0d0, 1.d0, 0.001d0, 1.d0   % Omega, W, kappa, diffusion coefft
+         0.02d0, 1.d0, 0.001d0, 1.d0   % Omega, W, kappa, diffusion coefft
          0.5d0                     % Theta
         END PROPERTIES
 %     Define element connectivity
@@ -114,11 +114,11 @@
    PRINT INITIAL MESH, Output_files\initial_mesh.dat
 
    TIME, VALUE, 0.d0        % Use this to specify the initial time
-   TIME, INCREMENT, 0.01d0  % Use this to specify a time increment (often needed for check stiffness)
+   TIME, INCREMENT, 0.1d0  % Use this to specify a time increment (often needed for check stiffness)
 
 %   The CHECK STIFFNESS key tests the element subroutine to ensure that
 %   the residual force vector is consistent with the stiffness
-%       CHECK STIFFNESS, U1
+       CHECK STIFFNESS, U1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -127,9 +127,9 @@
      STATIC STEP
 
           INITIAL TIME STEP, 1.d-03       
-          MAX TIME STEP, 1.d-03
+          MAX TIME STEP, 1.d-01
           MIN TIME STEP, 0.00001d0
-          MAX NUMBER OF STEPS, 3
+          MAX NUMBER OF STEPS, 100
           STOP TIME, 10.d0
           USER PRINT STEP INTERVAL, 1
 
